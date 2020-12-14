@@ -29,8 +29,8 @@ Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/r3s-wifi.x
 
 
 #add the local user admin
-$Password = Read-Host -Prompt 'Please set the standard local admin password defined in Asana' 
-New-LocalUser "Local_Admin" -Password $Password -FullName "Local Admin"
+$LAPassword = Read-Host -Prompt 'Please set the standard local admin password defined in Asana' 
+New-LocalUser "Local_Admin" -Password $LAPassword -FullName "Local Admin"
 Add-LocalGroupMember -Group "Administrators" -Member "Local_Admin"
 
 #rename the PC
