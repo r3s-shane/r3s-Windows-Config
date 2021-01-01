@@ -20,6 +20,8 @@ $text = @"
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
 "@   
 
+# To-Dos: Create a one time new move the Documents directory to the OneDrive folder.  Copy our default autohotkey script over to OneDrive then create a symbolic link in the Startup folder. 
+
 #download the installation assets from our S3 bucket
 New-Item -Path "c:\" -Name "new_install" -ItemType "directory"
 Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/phalanx_shield_bg.jpg -OutFile C:\new_install\phalanx_bg.jpg
@@ -68,8 +70,11 @@ Get-WallPaper
 $AllProtectors = (Get-BitlockerVolume -MountPoint $env:SystemDrive).KeyProtector 
 $RecoveryProtector = ($AllProtectors | where-object { $_.KeyProtectorType -eq "RecoveryPassword" })
 
-#Push Recovery Passoword Azure AD/O365
+#Push Recovery Password Azure AD/O365
 BackupToAAD-BitLockerKeyProtector $env:systemdrive -KeyProtectorId $RecoveryProtector.KeyProtectorID
+
+#Remove the Windows 10 Mail and Calendar app as we want users to use Outlook or O365 Webapps
+Get-AppxPackage Microsoft.windowscommunicationsapps | Remove-AppxPackage
 
 # install chocolatey if not installed
 if (!(Test-Path -Path "$env:ProgramData\Chocolatey")) {
