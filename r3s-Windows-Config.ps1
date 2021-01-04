@@ -28,7 +28,7 @@ Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/SentinelIn
 Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/r3s-wifi.xml -OutFile C:\new_install\r3s-wifi.xml
 
 #add the local user admin
-$LAPassword = Read-Host -AsSecureString -Prompt 'Please set the standard local admin password defined in Asana' 
+$LAPassword = Read-Host -AsSecureString -Prompt 'Please set the local admin password defined in Asana' 
 New-LocalUser "Local_Admin" -Password $LAPassword -FullName "Local Admin"
 Add-LocalGroupMember -Group "Administrators" -Member "Local_Admin"
 
