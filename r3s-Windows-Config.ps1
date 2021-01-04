@@ -20,8 +20,6 @@ $text = @"
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝
 "@   
 
-# To-Dos: Create a one time new move the Documents directory to the OneDrive folder.  Copy our default autohotkey script over to OneDrive then create a symbolic link in the Startup folder. 
-
 #download the installation assets from our S3 bucket
 New-Item -Path "c:\" -Name "new_install" -ItemType "directory"
 Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/phalanx_shield_bg.jpg -OutFile C:\new_install\phalanx_bg.jpg
@@ -29,9 +27,8 @@ Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/standard_p
 Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/SentinelInstaller-x64_windows_64bit_v4_1_2_45.exe -OutFile C:\new_install\SentinelInstaller-x64_windows_64bit_v4_1_2_45.exe
 Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/r3s-wifi.xml -OutFile C:\new_install\r3s-wifi.xml
 
-
 #add the local user admin
-$LAPassword = Read-Host -Prompt 'Please set the standard local admin password defined in Asana' 
+$LAPassword = Read-Host -AsSecureString -Prompt 'Please set the standard local admin password defined in Asana' 
 New-LocalUser "Local_Admin" -Password $LAPassword -FullName "Local Admin"
 Add-LocalGroupMember -Group "Administrators" -Member "Local_Admin"
 
@@ -41,7 +38,7 @@ Rename-Computer -NewName $Rename
 
 #add the corporate office Wi-Fi profile to the laptop
 $PW= Read-Host -Prompt 'Please enter the office Wi-Fi password' 
-$xmlfile= "C:\new-install\r3s-wifi.xml"
+$xmlfile= "C:\new_install\r3s-wifi.xml"
 netsh wlan add profile filename="$($xmlfile)"
 
 #set DNS to secure services (should work on most Dell laptops out of the box, else you may need to query the InterfaceAlias using the Get-NetAdapter CmdLet

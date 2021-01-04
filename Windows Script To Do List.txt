@@ -1,8 +1,4 @@
-Need to make sure the Onedrive folder exists and if it doesn't then we need to install Onedrive.
 
-Then we need to point the Documents folder to that folder:
-
-reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" /v Personal /t REG_SZ /d "C:\Users\%USERNAME%\OneDrive - risk3sixty, LLC\Documents" /f
 
 Then we want to copy the downloaded autohotkey script to either the startup folder or to the documents folder and create a shortcut that gets placed in the startup folder   or try creating a symbolic link.
 https://stackoverflow.com/questions/9701840/how-to-create-a-shortcut-using-powershell
