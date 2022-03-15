@@ -4,12 +4,7 @@ OneVizion's enduser laptop configuration script
 
 #download the installation assets from our S3 bucket
 New-Item -Path "c:\" -Name "new_install" -ItemType "directory"
-Invoke-WebRequest -Uri https://s3.amazonaws.com/public.risk3sixty.com/standard_packages.txt -OutFile C:\new_install\standard_packages.txt
-
-#add the local user admin
-$LAPassword = Read-Host -AsSecureString -Prompt 'Please set the local admin password defined in Asana'
-New-LocalUser "Local_Admin" -Password $LAPassword -FullName "Local Admin"
-Add-LocalGroupMember -Group "Administrators" -Member "Local_Admin"
+Invoke-WebRequest -Uri https://raw.githubusercontent.com/shanepeden/OneVizion-Windows-Config/master/standard_packages.txt -OutFile C:\new_install\standard_packages.txt
 
 #rename the PC
 $Rename = Read-Host -Prompt 'Please input the computer name based on the associated asset tag'
