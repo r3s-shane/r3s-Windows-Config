@@ -1,0 +1,8 @@
+googlechrome
+foxitreader
+greenshot
+notepadplusplus.install
+7zip
+ublockorigin-chrome
+lastpass-chrome
+choco-upgrade-all-at-startup
