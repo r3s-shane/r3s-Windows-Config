@@ -1,5 +1,5 @@
 $text = @"
-OneVizion's enduser laptop configuration script
+OneVizion's enduser laptop configuration scripts
 
 To run this script:
 1. Save the file to C:\ or another directory you can easily navigate to in Powershell. Make sure you change the file type from a .txt to a .ps1 (change the folder options to display file extensions for known file types)
